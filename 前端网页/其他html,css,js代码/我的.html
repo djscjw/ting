@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .message-box {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        *{
+  margin:0;
+  padding:0;
+}
+
+header {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+        }
+
+.container{
+    padding-top: 9px;
+  padding-bottom: 10px;
+}
+body{
+  background-color: #5a98c4;
+}
+
+
+
+
+
+
+
+button {
+  width: 120px;
+  height: 56px;
+  overflow: hidden;
+  border: none;
+  color: #fff;
+  background: none;
+  position: relative;
+  padding-bottom: 2em;
+  cursor: pointer;
+}
+
+button > div,
+button > svg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+
+button:before {
+  content: "";
+  position: absolute;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  transform: scaleX(0);
+  transform-origin: bottom right;
+  background: currentColor;
+  transition: transform 0.25s ease-out;
+}
+
+button:hover:before {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+}
+
+button .clone > *,
+button .text > * {
+  opacity: 1;
+  font-size: 1.3rem;
+  transition: 0.2s;
+  margin-left: 8px;
+}
+
+button .clone > * {
+  transform: translateY(60px);
+}
+
+button:hover .clone > * {
+  opacity: 1;
+  transform: translateY(0px);
+  transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+button:hover .text > * {
+  opacity: 1;
+  transform: translateY(-60px);
+  transition: all 0.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
+}
+
+button:hover .clone > :nth-child(1) {
+  transition-delay: 0.15s;
+}
+
+button:hover .clone > :nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+button:hover .clone > :nth-child(3) {
+  transition-delay: 0.25s;
+}
+
+button:hover .clone > :nth-child(4) {
+  transition-delay: 0.3s;
+}
+/* icon style and hover */
+button svg {
+  width: 20px;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%) rotate(-50deg);
+  transition: 0.2s ease-out;
+}
+
+button:hover svg {
+  transform: translateY(-50%) rotate(-90deg);
+}
+
+
+.background-img{
+  background-image: url("https://3.bp.blogspot.com/-piZWCW2uUbg/W2fPXxkWZgI/AAAAAAAAOu0/eydmMjTIqcwLMHEEr2H7imqoRTxMw4o9QCLcBGAs/s1600/among_trees_night_dribbble.png");
+height: 400px;
+  width: 800px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 5% auto;
+  padding:20px;
+  border: 1px solid #a0d5bb;
+  border-radius: 4px;
+  box-shadow: 0px 0px 5px #aac6b0;
+  position: relative;
+}
+
+.content h2{ font-size:19px;}
+
+.box{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  background: #5cb4a6a6;
+  box-sizing: border-box;
+  overflow: hidden;
+  box-shadow: 0 20px 50px #a6dbc0;
+  border: 2px solid #90c8ac;
+  color: white;
+  padding: 20px;
+}
+
+.box:before{
+  content: '';
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background: rgba(255,255,255,0.1);
+  transition:0.5s;
+  pointer-events: none;
+}
+
+.box:hover:before{
+  left:-50%;
+  transform: skewX(-5deg);
+}
+
+
+.box .content{
+  position:absolute;
+  top:15px;
+  left:15px;
+  right:15px;
+  bottom:15px;
+  border:1px solid #f0a591;
+  padding:20px;
+  text-align:center;
+  box-shadow: 0 5px 10px rgba(9,0,0,0.5);
+
+}
+
+.box span{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  box-sizing: border-box;
+
+}
+
+.box span:nth-child(1)
+{
+  transform:rotate(0deg);
+}
+
+.box span:nth-child(2)
+{
+  transform:rotate(90deg);
+}
+
+.box span:nth-child(3)
+{
+  transform:rotate(180deg);
+}
+
+.box span:nth-child(4)
+{
+  transform:rotate(270deg);
+}
+
+.box span:before
+{
+  content: '';
+  position: absolute;
+  width:100%;
+  height: 2px;
+  background: #50dfdb;
+  animation: animate 4s linear infinite;
+}
+
+@keyframes animate {
+  0% {
+  transform:scaleX(0);
+  transform-origin: left;
+  }
+  50%
+  {
+    transform:scaleX(1);
+  transform-origin: left;
+  }
+  50.1%
+  {
+    transform:scaleX(1);
+  transform-origin: right;
+
+  }
+
+  100%
+  {
+    transform:scaleX(0);
+  transform-origin: right;
+
+  }
+
+
+}
+
+.container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20vh;
+}
+.container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 16vh;
+}
+
+.avatar-frame {
+  width: 100px; /* 调整框的宽度 */
+  height: 100px; /* 调整框的高度 */
+  border-radius: 50%; /* 将框设置为圆形 */
+  overflow: hidden; /* 隐藏图片超出圆框部分 */
+  border: 2px solid #ffffff; /* 设置边框样式 */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* 添加阴影效果 */
+}
+
+a {
+  text-decoration: none; /* 清除下划线 */
+  color: inherit; /* 继承父元素的文本颜色 */
+}
+.avatar-frame img {
+  width: 100%; /* 让图片充满圆框 */
+  height: 100%; /* 让图片充满圆框 */
+  object-fit: cover; /* 填充图片，保持比例 */
+}
+h2 {
+  text-align: center; /* 文本水平居中 */
+}
+
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>听，名胜的声音</h1>
+            <nav>
+                <ul>
+                    <button>
+                        <div class="text">
+                          <span>返回首页</span>
+
+                        </div>
+                        <div class="clone">
+                          <span><a href="首页页面.html">返回首页</a></span>
+
+                        </div>
+                        <svg
+                          stroke-width="2"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          class="h-6 w-6"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20px"
+                        >
+                          <path
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                            stroke-linejoin="round"
+                            stroke-linecap="round"
+                          ></path>
+                        </svg>
+                      </button>
+
+                      
+
+                      <button>
+                        <div class="text">
+                          <span>地方特色</span>
+
+                        </div>
+                        <div class="clone">
+                          <span><a href="地方特色.html">地方特色</a></span>
+
+                        </div>
+                        <svg
+                          stroke-width="2"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          class="h-6 w-6"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20px"
+                        >
+                          <path
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                            stroke-linejoin="round"
+                            stroke-linecap="round"
+                          ></path>
+                        </svg>
+                      </button>
+
+                      <button>
+                        <div class="text">
+                          <span>我的信息</span>
+
+                        </div>
+                        <div class="clone">
+                          <span><a href="我的.html? user={{ user_id }}">我的信息</a></span>
+
+                        </div>
+                        <svg
+                          stroke-width="2"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          class="h-6 w-6"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20px"
+                        >
+                          <path
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                            stroke-linejoin="round"
+                            stroke-linecap="round"
+                          ></path>
+                        </svg>
+                      </button>
+
+
+                      <button>
+                        <div class="text">
+                          <span>联系我们</span>
+
+                        </div>
+                        <div class="clone">
+                          <span><a href="联系我们.html">联系我们</a></span>
+
+                        </div>
+                        <svg
+                          stroke-width="2"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          class="h-6 w-6"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20px"
+                        >
+                          <path
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                            stroke-linejoin="round"
+                            stroke-linecap="round"
+                          ></path>
+                        </svg>
+                      </button>
+
+
+
+                      <button>
+                        <div class="text">
+                          <span>关于网页</span>
+
+                        </div>
+                        <div class="clone">
+                          <span><a href="展示.html">关于网页</a></span>
+
+                        </div>
+                        <svg
+                          stroke-width="2"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                          fill="none"
+                          class="h-6 w-6"
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="20px"
+                        >
+                          <path
+                            d="M14 5l7 7m0 0l-7 7m7-7H3"
+                            stroke-linejoin="round"
+                            stroke-linecap="round"
+                          ></path>
+                        </svg>
+                      </button>
+
+
+
+
+                </ul>
+            </nav>
+        </div>
+
+    </header>
+        <section>
+          <div class="container">
+            <div class="background-img">
+              <div class="box">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <div class="container1">
+                    <div class="avatar-frame">
+                      <img src="../图片/1.jpg" alt="Avatar">
+                    </div>
+                    <p id="user_id"></p > <!-- 用于显示 user_id 的段落 -->
+                  </div>
+                  <div class="container2">
+                    <h2 id="username"></h2>
+                  </div>
+                  <p><a></a></p> <!-- 这里直接使用 Flask 的模板引擎来获取用户 ID -->
+                </div>
+
+              </div>
+            </div>
+          </div>
+             <!-- 添加消息框 -->
+        <div class="message-box">
+            <h3 id="received-message">管理员发送来的消息:</h3>
+            <div id="received-messages"></div>
+        </div>
+        </section>
+          </a>
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 定义一个包含网名的数组
+            const usernames = [
+    'a_春华如', 'b_夜凝香', 'c_丹青妙', 'd_海悦然', 'e_梦幻儿',
+    'f_飞扬雪', 'g_空梦萦', 'h_清晨曦', 'i_风舞影', 'j_雨梦心',
+    'k_倾城如', 'l_青阳曲', 'm_紫韵儿', 'n_秋霞红', 'o_雪蝶舞',
+    'p_花柔妍', 'q_晨曦影', 'r_夏微风', 's_星辰光', 't_悠然心',
+    'u_水清澈', 'v_冬雪夜', 'w_悠悠雨', 'x_晴空露', 'y_静静波',
+    'z_白云飘', 'aa_轻舞风', 'ab_清风轻', 'ac_柔情蜜', 'ad_微笑语',
+    'ae_流年舞', 'af_雪花飞', 'ag_迷离梦', 'ah_寒夜月', 'ai_晓风渡',
+    'aj_冰雪舞', 'ak_幻梦蝶', 'al_风中舞', 'am_如梦泽', 'an_雪落影',
+    'ao_梦幻影', 'ap_静夜秋', 'aq_飞絮飘', 'ar_梦回时', 'as_若梦兮',
+    'at_幽兰香', 'au_静婉约', 'av_红颜露', 'aw_花季夏', 'ax_清风柔'
+];
+
+            // 随机选择一个网名
+            const randomIndex = Math.floor(Math.random() * usernames.length);
+            const randomUsername = usernames[randomIndex];
+
+            // 将随机选择的网名显示在 h2 标签中
+            document.getElementById('username').textContent = randomUsername;
+        });
+         let queryParams = new URLSearchParams(window.location.search);
+            let id = queryParams.get('id');
+
+           document.addEventListener('DOMContentLoaded', function() {
+        // 使用 fetch API 发送请求获取用户消息数据
+        fetch('http://localhost:5000/get_user_id') // 发送 GET 请求到 /get_user_id 路径
+            .then(response => response.json()) // 解析响应为 JSON 格式
+            .then(data => {
+                // 获取用户消息数据
+                const userMessage = data.message;
+
+                // 将获取到的消息数据填充到消息框中
+                const receivedMessage = document.getElementById('received-message');
+                receivedMessage.textContent += ` ${userMessage}`; // 将新消息添加到已有内容后面
+            })
+            .catch(error => console.error('Error fetching user message data:', error));
+    });
+    </script>
+</body>
+</html>

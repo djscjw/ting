@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>后台处理</title>
+    <!-- 这里可以添加你需要的 CSS 样式链接 -->
+    <style>
+        /* CSS 样式可以在这里添加 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #666;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+        }
+        section {
+            padding: 20px;
+        }
+        .feedback {
+            background-color: #fff;
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .pending-article {
+            background-color: #ffe4c4;
+            border: 1px solid #ffa500;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .processed-feedback {
+            background-color: #f0f8ff;
+            border: 1px solid #add8e6;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>后台处理</h1>
+    </header>
+    <nav>
+        用户信息 |
+        待审核文章 |
+        回复用户
+    </nav>
+    <section id="feedback">
+        <h2>用户信息</h2>
+        <div class="feedback">
+            <p id="userName">用户姓名:</p >
+        </div>
+        <div class="feedback">
+            <p id="userEmail">用户邮箱:</p >
+        </div>
+    </section>
+    <section id="pending-article">
+        <h2>待审核文章</h2>
+        <div class="pending-article" id="pendingMessage"></div>
+    </section>
+    <section id="processed-feedback">
+        <h2>回复用户</h2>
+        <div class="processed-feedback" id="replyUser">
+            <form id="replyForm">
+                <label for="replyMessage">回复消息:</label><br>
+                <textarea id="replyMessage" name="replyMessage" rows="4" cols="50"></textarea><br>
+                <button type="submit" id="submitButton">提交回复</button>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        // 获取 URL 中的参数值
+        const getUrlParameter = (name) => {
+            name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        };
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // 获取传递的 id 参数
+            const id = getUrlParameter('id');
+
+            // 根据 id 获取用户信息，并更新页面内容
+            fetch(`http://localhost:5001/feedback`)
+                .then(response => response.json())
+                .then(data => {
+                    const user = data.find(item => item.id === parseInt(id));
+                    if (user) {
+                        document.getElementById('userName').textContent = `用户姓名: ${user.name}`;
+                        document.getElementById('userEmail').textContent = `用户邮箱: ${user.email}`;
+                    }
+                })
+                .catch(error => console.error('Error fetching user data:', error));
+
+            // 获取待审核文章内容，并更新页面内容
+            fetch(`http://localhost:5001/message/${id}`)
+                .then(response => response.json())
+                .then(data => {
+                    const pendingMessage = data.message;
+                    document.getElementById('pendingMessage').textContent = pendingMessage;
+                })
+                .catch(error => console.error('Error fetching pending message:', error));
+        });
+
+        // 添加事件监听器来处理表单提交事件
+        document.getElementById('replyForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // 阻止表单默认提交行为
+
+            // 获取回复消息的内容
+            const replyMessage = document.getElementById('replyMessage').value;
+
+            // 发送消息给指定用户
+            fetch('http://localhost:5001/send_message', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message: replyMessage,
+                    user_id: getUrlParameter('id') // 使用 URL 参数中的用户 ID
+                })
+            })
+            .then(response => {
+                if (response.ok) {
+                    alert('消息发送成功！');
+                    document.getElementById('replyMessage').value = ''; // 清空回复消息框
+                } else {
+                    alert('消息发送失败，请重试。');
+                }
+            })
+            .catch(error => {
+                console.error('Error sending message:', error);
+                alert('消息发送失败，请重试。');
+            });
+        });
+    </script>
+</body>
+</html>

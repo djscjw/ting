@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  position: absolute;
+  height: 350px;
+  width: 100%;
+  max-width: 850px;
+  margin: auto;
+  background-color: #ffffff;
+  border-radius: 25px;
+  box-shadow: 10px 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.card .inner_part {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 0 30px;
+  height: 350px;
+  position: absolute;
+}
+
+#slideImg:checked ~ .inner_part {
+  padding: 0;
+  transition: .1s ease-in;
+}
+
+.inner_part .img {
+  height: 260px;
+  width: 260px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border-radius: 20px;
+  box-shadow: 0 10px 50px rgba(0,0,0,0.2);
+}
+
+#slideImg:checked ~ .inner_part .img {
+ height: 350px;
+ width: 850px;
+ z-index: 99;
+ transition: .3s .2s ease-in;
+}
+
+.img img {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  opacity: 0;
+  transition: .6s;
+}
+
+#slide_1:checked ~ .inner_part .img_1,
+#slide_2:checked ~ .inner_part .img_2,
+#slide_3:checked ~ .inner_part .img_3 {
+  opacity: 1;
+  transition-delay: .2s;
+}
+
+.content {
+  padding: 0 20px 0 35px;
+  width: 530px;
+  margin-left: 50px;
+  opacity: 0;
+  transition: .6s; 
+}
+
+#slideImg:checked ~ .inner_part .content {
+  display: none;
+}
+
+#slide_1:checked ~ .inner_part .content_1,
+#slide_2:checked ~ .inner_part .content_2,
+#slide_3:checked ~ .inner_part .content_3 {
+  opacity: 1;
+  margin-left: 0;
+  z-index: 100;
+  transition-delay: .3s;
+}
+
+.content .title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #0d0925;
+  margin: 0 0 20px 0;
+}
+
+.content .text {
+  font-size: 19px;
+  color: #2d51bc;
+  margin: 0 auto 30px auto;
+  line-height: 1.5em;
+  text-align: justify;
+}
+
+.content button {
+  padding: 15px 20px;
+  border: none;
+  font-size: 16px;
+  color: #fff0e6;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-radius: 50px;
+  cursor: pointer;
+  outline: none;
+  background: #000000;
+  float: right;
+}
+
+.content button:hover {
+  background: #6f1919;
+  color: #000000;
+}
+
+.slider {
+  position: absolute;
+  bottom: 25px;
+  left: 55%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+#slideImg:checked ~ .slider {
+  display: none;
+}
+
+.slider .slide {
+  position: relative;
+  height: 10px;
+  width: 50px;
+  background: #e67eb3;
+  border-radius: 5px;
+  display: inline-flex;
+  margin: 0 3px;
+  cursor: pointer;
+}
+
+
+.slider .slide:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: -100%;
+  background: #000000;;
+  border-radius: 10px;
+  transform: scaleX(0);
+  transition: transform .6s;
+  transform-origin: left;
+}
+
+#slide_1:checked ~ .slider .slide_1:before,
+#slide_2:checked ~ .slider .slide_2:before,
+#slide_3:checked ~ .slider .slide_3:before {
+  transform: scaleX(1);
+  width: 100%;
+}
+
+input {
+  display: none;
+}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <input type="radio" name="select" id="slide_1" checked>
+    <input type="radio" name="select" id="slide_2">
+    <input type="radio" name="select" id="slide_3">
+    <input type="checkbox" id="slideImg">
+  
+    <div class="slider">
+      <label for="slide_1" class="slide slide_1"></label>
+      <label for="slide_2" class="slide slide_2"></label>
+      <label for="slide_3" class="slide slide_3"></label>
+    </div>
+  
+   <div class="inner_part">
+      <label for="slideImg" class="img">
+        <img class="img_1" src="../图片/成8.webp">
+      </label>
+      <div class="content content_1">
+        <div class="title">起源</div>
+        <div class="text">
+          “锦里”原为是秦汉三国时期成都以织锦、售锦为主的一条古街，历代文献词赋多有记载。织锦业的高度发达使得成都有了“锦城”的别称。锦里，人称“西蜀第一街”，是西蜀历史上最古老、最具有商业气息的街道之一，以织锦、售锦为主，历代文献词赋多有记载。
+        </div>
+        <button><a href="https://baike.baidu.com/item/%E8%8B%97%E6%97%8F%E9%93%B6%E5%99%A8/3142939?fr=ge_ala">Read More</a></button>
+      </div>
+    </div>
+  
+    <div class="inner_part">
+      <label for="slideImg" class="img">
+        <img class="img_2" src="../图片/成8.webp">
+      </label>
+      <div class="content content_2">
+        <div class="title">诸葛井</div>
+        <div class="text">
+          诸葛庐大门上悬挂着“一泓清水鉴风云，三顾隆情真蜀汉”，院内还有一口井，此井名诸葛井。相传诸葛井是诸葛亮为民谋利所挖掘的水井，而诸葛庐正是诸葛亮未出山时的住所。成都人一直对诸葛亮有种特殊的感情，锦里旁边纪念诸葛亮的武侯祠。
+        </div>
+        <button><a href="https://baike.baidu.com/item/%E8%8B%97%E6%97%8F%E6%B2%B9%E8%8C%B6/8211394?fr=ge_ala">Read More</a></button>
+      </div>
+    </div>
+  
+    <div class="inner_part">
+      <label for="slideImg" class="img">
+        <img class="img_3" src="../图片/成10.webp">
+      </label>
+      <div class="content content_3">
+        <div class="title">阿斗井</div>
+        <div class="text">相传刘备驾崩以后，其子刘禅每年都要去惠陵祭拜先父，每次都会在一口井边驻足休息，后人因此称之为阿斗井。刘禅的昏庸无能在历史上出了名，后来，人们常用“扶不起的阿斗”比喻那种懦弱无能、没法使他振作的人。
+        </div>
+        <button><a href="https://baike.baidu.com/item/%E8%8B%97%E6%97%8F%E8%B7%B3%E8%8A%B1%E8%8A%82/24209117?fr=ge_ala">Read More</a></button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

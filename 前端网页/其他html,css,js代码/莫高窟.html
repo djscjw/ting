@@ -1,0 +1,353 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>莫高窟</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+
+        .shell {
+            width: 100%;
+            position: relative;
+            padding: 80px 0;
+            background-attachment: fixed;
+            background-size: cover;
+        }
+
+        .shell:before {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('../图片/bk4.jpg');
+            background-size:contain;
+            content: "";
+        }
+
+
+        .header {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .title {
+            color:black;
+            font-size: 46px;
+            font-weight: normal;
+            margin: 0;
+        }
+
+        .timeline {
+            display: flex;
+            margin: 0 auto;
+            flex-wrap: wrap;
+            flex-direction: column;
+            max-width: 700px;
+            position: relative;
+        }
+
+        .content-title {
+            font-weight: normal;
+            font-size: 66px;
+            margin: -10px 0 0 0;
+            transition: 0.4s;
+            padding: 0 10px;
+            box-sizing: border-box;
+            color: black;
+        }
+
+        .content-desc {
+            margin: 0;
+            font-size: 15px;
+            box-sizing: border-box;
+            color:black;
+            line-height: 25px;
+        }
+
+        .timeline:before {
+            position: absolute;
+            left: 50%;
+            width: 2px;
+            height: 100%;
+            margin-left: -1px;
+            content: "";
+            background: black;
+        }
+
+        .item {
+            padding: 40px 0;
+            opacity: 0.3;
+            filter: blur(2px);
+            transition: 0.5s;
+            box-sizing: border-box;
+            width: calc(50% - 40px);
+            display: flex;
+            position: relative;
+            transform: translateY(-80px);
+        }
+        .item:before {
+    content: attr(data-text);
+    letter-spacing: 3px;
+    width: 100%;
+    position: absolute;
+    color: white; /* 将字体颜色设置为白色 */
+    font-size: 43px;
+    font-family: '华文楷体', cursive; /* 设置字体为华文行楷 */
+   /* font-family: SimSun, '宋体', sans-serif; /* 设置字体为宋体 */
+
+    top: 70%;
+    margin-top: -5px;
+    padding-left: 14px;
+    opacity: 0;
+    right: calc(-100% - 56px);
+    font-weight: 900;
+    letter-spacing: 5px;
+
+    background-color: #990000; /* 设置文字的背景色为红色   #9F9F5F*/
+    padding: 5px 8px; /* 调整内边距，控制背景框大小 */
+    box-sizing: border-box; /* 让内边距包含在元素宽度内 */
+}
+
+
+        .item:nth-child(even) {
+            align-self: flex-end;
+        }
+
+        .item:nth-child(even):before {
+            right: auto;
+            text-align: right;
+            left: calc(-100% - 56px);
+            padding-left: 0;
+            border-left: none;
+            border-right: 2px solid black;
+            padding-right: 15px;
+        }
+
+        .item--active {
+            opacity: 1;
+            transform: translateY(0);
+            filter: blur(0px);
+        }
+
+        .item--active:before {
+            top: 50%;
+            transition: 0.3s all 0.2s;
+            opacity: 1;
+        }
+
+        .item--active .content-title {
+            margin: -50px 0 20px 0;
+        }
+
+        .img {
+            max-width: 100%;
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+        }
+
+        .subtitle {
+            color: rgba(0, 0, 0, 0.4);
+            font-size: 16px;
+            letter-spacing: 5px;
+            margin: 10px 0 0 0;
+            font-weight: normal;
+        }
+
+        .footer {
+            padding: 95px 0;
+            text-align: center;
+        }
+
+        footer {
+  position: absolute;
+  top: 4150px; /* 与底部的距离 */
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%); /* 使页脚居中 */
+  background-color: #1a1818;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+
+}
+
+        @media only screen and (max-width: 767px) {
+            .item {
+                align-self: baseline !important;
+                width: 100%;
+                padding: 0 30px 150px 80px;
+            }
+
+            .item:before {
+                left: 10px !important;
+                padding: 0 !important;
+                top: 50px;
+                text-align: center !important;
+                width: 60px;
+                border: none !important;
+            }
+
+            .item:last-child {
+                padding-bottom: 40px;
+            }
+        }
+
+        @media only screen and (max-width: 767px) {
+            .timeline:before {
+                left: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="shell" id="shell">
+        <div class="header">
+            <h2 class="title">莫高窟</h2>
+            <h3 class="subtitle">前世古今</h3>
+            <h4>莫高窟，又被称为敦煌石窟，是中国四大石窟之一，位于甘肃省敦煌市的鸣沙山脚下，毗邻大漠。</h4>
+        </div>
+        <div class="timeline">
+
+
+            <div class="item" data-text="莫高窟的开始">
+                <div class="content">
+                    <img class="img" src="../图片/img01.jpg" />
+                    <h2 class="content-title">公元前209年</h2>
+                    <p class="content-desc">
+                        公元前209年，匈奴击败月氏，占领河西走廊。公元前121年，霍去病打败匈奴，将河西纳入汉朝的版图。 公元前111年，西汉在河西设置武威、酒泉、张掖、敦煌四郡。从此，敦煌开始繁荣，丝绸之路也得以开通。 敦煌是佛教传入中原的第一站，也是西域僧人进入中原的第一站。僧人在敦煌开凿禅窟，信佛的人越来越多，各色人都在开凿石窟做功德，石窟越来越多，莫高窟酝酿着博大的佛教文化。 隋文帝隋炀帝都特别信佛，隋朝37年，莫高窟完成94个石窟。敦煌地处中西商路的要道，往来客商一路上不平安，也需要在敦煌祈求佛的保佑.公元633年，敦煌更名为沙洲，随着盛唐的到来，敦煌迎来最辉煌的时代。
+                    </p>
+                </div>
+            </div>
+
+            <div class="item" data-text="莫高窟的建设">
+                <div class="content">
+                    <img class="img" src="../图片/img02.jpg" />
+                    <h2 class="content-title">公元755年</h2>
+                    <p class="content-desc">
+                        公元755年，安史之乱爆发，河西防御空虚，公元786年，敦煌为吐蕃占领，赤松德赞大力弘扬佛法，敦煌佛教得到进一步发展。公元848年，敦煌人揭竿而起，赶走吐蕃奴隶主，和长安联络，再度回到唐王朝的怀抱，但唐王朝已经走向衰落。公元1006年，新疆与中亚地区的黑汗王朝占领于阗王国之后，继续向东，敦煌三界寺的僧人将多年积累的大量经卷、文书、绢画藏进了敦煌17号石窟，这批文物从此冬眠。公元1036年，西夏占领沙洲，统治达192年，这是敦煌成立以来，由少数民族统治最长的时期。公元1715年，康熙收复敦煌，大批移民到敦煌屯田，敦煌社会经济开始恢复。1723年，复立沙洲所，清王朝恢复了对敦煌的统治。敦煌的经济政治文化得到重建与发展，但汉唐时期的辉煌一去不复返。清王朝走向穷途末路之时，丝绸之路成为历史，敦煌逐渐被遗忘。
+                    </p>
+                </div>
+            </div>
+
+            <div class="item" data-text="道士塔">
+                <div class="content">
+                    <img class="img" src="../图片/img03.jpg" />
+                    <h2 class="content-title">1900</h2>
+                    <p class="content-desc">
+                        王圆箓与所雇敦煌贫士杨某在清理沙土时，意外发现莫高窟的藏洞，里面积满写卷、印本、画幡、铜佛等珍贵文物，这一发现为研究敦煌艺术、历史和宗教提供了宝贵的实物资料。然而20世纪初，这批刚发现的文物和文化遗产，被西方列强疯狂劫掠，文物流散于全世界十多个国家，藏于中国的仅占冰山一角。 藏经洞的发展震惊全世界，从此国际上多了一门显学——敦煌学。敦煌学是指以敦煌遗书、敦煌石窟艺术、以及敦煌史地为研究对象的一门学科。
+                    </p>
+                </div>
+            </div>
+
+
+
+
+
+            <div class="item" data-text="敦煌的现状">
+                <div class="content">
+                    <img class="img" src="../图片/img04.jpg" />
+                    <h2 class="content-title">现在</h2>
+                    <p class="content-desc">
+                        陈寅恪先生说过：“敦煌者，吾国学术之伤心史也。”
+                        目前大约有16000多件敦煌艺术主要珍藏在中国国家图书馆
+                        敦煌文化的高峰已经不再，汉唐时代的辉煌不会重现，但敦煌的历史还要写下去，对于中华儿女来说，继承它博大的精神内涵最为重要，敦煌对我们意味着什么，毫无疑问，敦煌是我们的文化血脉，敦煌就是我们自己。在这里我们也要致敬那一代代付出的敦煌研究者们。莫高人身上那份“择一事、终一生”的信念，那种“夜夜敦煌入梦来”的炽热情怀，那份“做好传帮带、传好接力棒”的担当，始终在赓续绵延。
+                    </p>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Culture Tour. 本网站所使用素材图片均来自花瓣网。
+            如有侵权请联系：2107084687@qq.com</p>
+    </footer>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <script>
+        (function ($) {
+            $.fn.timeline = function () {
+                var selectors = {
+                    id: $(this),
+                    item: $(this).find(".item"),
+                    activeClass: "item--active",
+                    img: ".img"
+                };
+                // 将第一个时间轴项目激活，并设置时间轴背景图片为第一个项目的图片
+                selectors.item.eq(0).addClass(selectors.activeClass);
+                selectors.id.css(
+                    "background-image",
+                    "url(" +
+                    selectors.item
+                        .first()
+                        .find(selectors.img)
+                        .attr("src") +
+                    ")"
+                );
+                // 获取时间轴项目的总数
+                var itemLength = selectors.item.length;
+                // 当页面滚动时，触发滚动事件
+                $(window).scroll(function () {
+                    var max, min;
+                    // 获取页面滚动的距离
+                    var pos = $(this).scrollTop();
+                    selectors.item.each(function (i) {
+                        // 获取当前时间轴项目的最小和最大高度
+                        min = $(this).offset().top;
+                        max = $(this).height() + $(this).offset().top;
+                        var that = $(this);
+                        // 如果滚动到最后一个项目，并且超过了当前项目高度的一半，
+                        // 则将最后一个项目设置为激活状态，并设置背景图片为最后一个项目的图片
+                        if (i == itemLength - 2 && pos > min + $(this).height() / 2) {
+                            selectors.item.removeClass(selectors.activeClass);
+                            selectors.id.css(
+                                "background-image",
+                                "url(" +
+                                selectors.item
+                                    .last()
+                                    .find(selectors.img)
+                                    .attr("src") +
+                                ")"
+                            );
+                            selectors.item.last().addClass(selectors.activeClass);
+                        }
+                        // 如果当前滚动位置在当前项目的最小和最大高度之间，
+                        // 则将当前项目设置为激活状态，并设置背景图片为当前项目的图片
+                        else if (pos <= max - 10 && pos >= min) {
+                            selectors.id.css(
+                                "background-image",
+                                "url(" +
+                                $(this)
+                                    .find(selectors.img)
+                                    .attr("src") +
+                                ")"
+                            );
+                            selectors.item.removeClass(selectors.activeClass);
+                            $(this).addClass(selectors.activeClass);
+                        }
+                    });
+                });
+            };
+        })(jQuery)
+        /*
+        最后，我们调用 timeline 插件并传入时间轴的 ID 作为参数。
+        这将启用时间轴插件并为该时间轴绑定滚动事件。
+        */
+        $("#shell").timeline();
+    </script>
+</body>
+
+</html>

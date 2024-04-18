@@ -1,0 +1,36 @@
+.feedback-table {
+    width: 80%;
+    margin: 20px auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.table-header {
+    background-color: #f0f0f0;
+    padding: 10px;
+    display: flex;
+}
+
+.header-item {
+    flex: 1;
+    text-align: center;
+    font-weight: bold;
+}
+
+.table-row {
+    padding: 10px;
+    display: flex;
+    border-top: 1px solid #ccc;
+}
+
+.row-item {
+    flex: 1;
+    text-align: center;
+    text-decoration: none;
+    color: #333;
+}
+
+.row-item:hover {
+    color: blue;
+}

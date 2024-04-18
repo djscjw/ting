@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Feedback</title>
+    <link rel="stylesheet" href="用户信息.css">
+    <link rel="stylesheet" href="clear.css">
+    <style>
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 40px;
+            text-align: center;
+        }
+        .feedback-table {
+            width: 80%;
+            margin: auto;
+            margin-top: 20px;
+        }
+        .table-header {
+            display: flex;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+        .table-item {
+            flex: 1;
+            text-align: center;
+            vertical-align: middle;
+        }
+        .table-item:first-child {
+            flex: 0.5;
+        }
+        .table-row {
+            display: none; /* 默认隐藏所有行 */
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+            cursor: pointer;
+        }
+        .table-row:hover {
+            background-color: #f0f0f0; /* 鼠标悬停时高亮显示 */
+        }
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .pagination-button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            border: 1px solid #ccc;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>后台管理</h1>
+    </header>
+    <div class="feedback-table">
+        <div class="table-header">
+            <span class="table-item">id</span>
+            <span class="table-item">name</span>
+            <span class="table-item">email</span>
+            <span class="table-item">created_at</span>
+        </div>
+        <!-- Add more table rows dynamically here -->
+    </div>
+
+    <div class="pagination">
+        <span class="pagination-button" id="prevPage">Prev</span>
+        <span class="pagination-button" id="nextPage">Next</span>
+    </div>
+
+    <script>
+        const port = 5001;
+        document.addEventListener('DOMContentLoaded', function() {
+            const table = document.querySelector('.feedback-table');
+            const prevPageButton = document.getElementById('prevPage');
+            const nextPageButton = document.getElementById('nextPage');
+
+            const pageSize = 16; // 每页展示的行数
+            let currentPage = 1; // 当前页码
+
+            const fetchData = async (page) => {
+                try {
+                    const response = await fetch(`http://localhost:5001/feedback?page=${page}&pageSize=${pageSize}`);
+                    const data = await response.json();
+                    renderTable(data);
+                } catch (error) {
+                    console.error('Error fetching feedback:', error);
+                }
+            };
+
+            const renderTable = (data) => {
+                table.innerHTML = ''; // 清空表格内容
+
+                // 添加字段头
+                const headerRow = document.createElement('div');
+                headerRow.className = 'table-header';
+                ['id', 'name', 'email', 'created_at'].forEach(fieldName => {
+                    const headerItem = document.createElement('span');
+                    headerItem.className = 'table-item';
+                    headerItem.textContent = fieldName;
+                    headerRow.appendChild(headerItem);
+                });
+                table.appendChild(headerRow);
+
+                // 添加数据行
+                data.forEach(item => {
+                    const row = document.createElement('div');
+                    row.className = 'table-row';
+
+                    ['id', 'name', 'email', 'created_at'].forEach(fieldName => {
+                        const cell = document.createElement('span');
+                        cell.className = 'table-item';
+                        cell.textContent = item[fieldName];
+                        row.appendChild(cell);
+                    });
+
+                    row.addEventListener('click', function() {
+                        // 获取当前行的id
+                        const id = item['id'];
+                        // 跳转到后台处理页面并传递id参数
+                        window.location.href = `后台处理.html?id=${id}`;
+                    });
+
+                    table.appendChild(row);
+                });
+
+                // 显示当前页的行数
+                const start = (currentPage - 1) * pageSize;
+                const end = currentPage * pageSize;
+                const rows = document.querySelectorAll('.table-row');
+                rows.forEach((row, index) => {
+                    if (index >= start && index < end) {
+                        row.style.display = 'flex';}
+                    else {
+                        row.style.display = 'none'; // 隐藏其他行
+                    }
+                });
+            };
+
+            const goToPrevPage = () => {
+                if (currentPage > 1) {
+                    currentPage--;
+                    fetchData(currentPage);
+                }
+            };
+
+            const goToNextPage = () => {
+                currentPage++;
+                fetchData(currentPage);
+            };
+
+            prevPageButton.addEventListener('click', goToPrevPage);
+            nextPageButton.addEventListener('click', goToNextPage);
+
+            // 初始加载第一页数据
+            fetchData(currentPage);
+        });
+    </script>
+</body>
+</html>

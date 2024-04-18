@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+<link rel="stylesheet" href="轮播图.css">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    
+  
+
+<div class="carousel-container">
+        <div class="container">
+            <div class="header">
+            <h1>听，名胜的声音</h1>
+        </div>
+        <div class="navbar">
+                <ul>
+                    <li><a href="首页页面.html">首页</a></li>
+                    <li><a href="地方特色.html">地方特色</a></li>
+                    <li><a href="我的.html">我的</a></li>
+                    <li><a href="联系我们.html">联系我们</a></li>
+                    <li><a href="展示.html">关于网页</a></li>
+                </ul>
+            </div>
+        </div> 
+        <!--轮播图-->
+        <div class="carousel auto-play">
+            <ul class="slides">
+                <li id="slide-1" class="slide">
+                    <img src="../图片/成3.webp" alt="img1" />
+                </li>
+                <li id="slide-2" class="slide">
+                    <img src="../图片/成4.webp" alt="img2" />
+                </li>
+                <li id="slide-3" class="slide">
+                    <img src="../图片/成5.webp" alt="img3" />
+                </li>
+                <li id="slide-4" class="slide">
+                    <img src="../图片/成2.webp" alt="img4" />
+                </li>
+                <li id="slide-5" class="slide">
+                    <img src="../图片/成5.webp" alt="img5" />
+                </li>
+                <li id="slide-6" class="slide">
+                    <img src="../图片/成5.webp" alt="img6" />
+                </li>
+            </ul>
+        <ul class="nav-dots">
+            <li class="dot"><a href="#slide-1"></a></li>
+            <li class="dot"><a href="#slide-2"></a></li>
+            <li class="dot"><a href="#slide-3"></a></li>
+            <li class="dot"><a href="#slide-4"></a></li>
+            <li class="dot"><a href="#slide-5"></a></li>
+            <li class="dot"><a href="#slide-6"></a></li>
+        </ul>
+        <ul class="nav-arrows">
+            <li class="arrow-left"></li>
+            <li class="arrow-right"></li>
+        </ul>
+    </div>
+  
+
+    
+<!--电影特效-->
+<div class="f1">  <iframe src="分界2.html" ></iframe></div>  
+<div id="movie-card-list">
+    <div class="movie-card" data-movie="Blade Runner">
+        <div class="movie-card__overlay"></div>
+       
+        <div class="movie-card__content">
+            <div class="movie-card__header">
+                <h1 class="movie-card__title">成都武侯祠</h1>
+                <h4 class="movie-card__info">锦里作为成都武侯祠博物馆的一部分</h4>
+            </div>
+            <p class="movie-card__desc">成都武侯祠：全世界影响最大的三国遗址，被誉为“三国圣地”。 中国唯一的一座君臣合祀祠庙、也是最富盛名的诸葛亮、刘备及蜀汉英雄纪念地，由汉昭烈庙（纪念刘备）、武侯祠（纪念诸葛亮）、惠陵（刘备之墓）、三义庙（纪念刘关张）四部分组成，君臣同庙，极为罕见。 杜甫的《咏怀古迹》写道：武侯祠堂常邻近，一体君臣祭祀同。说的就是成都武侯祠。</p>
+        </div>
+    </div>
+
+    <div class="movie-card" data-movie="Back to the Future">
+        <div class="movie-card__overlay"></div>
+
+        <div class="movie-card__content">
+            <div class="movie-card__header">
+                <h1 class="movie-card__title">黄龙潭</h1>
+                <h4 class="movie-card__info">三国故事</h4>
+            </div>
+            <p class="movie-card__desc">黄龙二字取自东吴孙权所使用的年号，229年~231年，共使用了三年。黄龙潭上修建着小桥和湖心亭，湖心亭叫做凤仪亭，凤仪亭又名梳妆掷戟，出于《三国演义》，讲述了貂蝉和吕布二人在凤仪亭私会，被董卓撞破的故事，经过凤仪亭事件，董卓与吕布二人彻底反目成仇，吕布下了杀董卓的决心。</p>
+        </div>
+    </div>
+
+    <div class="movie-card" data-movie="Akira">
+        <div class="movie-card__overlay"></div>
+        <div class="movie-card__content">
+            <div class="movie-card__header">
+                <h1 class="movie-card__title">锦里古街</h1>
+                <h4 class="movie-card__info">有着“西蜀第一街”的称号</h4>
+            </div>
+            <p class="movie-card__desc">“锦里”带有典型的成都明清时期的民居建筑风格，与武侯祠建筑的主题风格相一致。游客可以饮一杯英雄酒，唱一段三国戏，品一份三国情。有煮酒坊、阿斗井、诸葛井、乌衣巷等建筑，体验“梦回三国”的意境。定期上演的特色川戏、坝坝电影，以特色小摊的方式举行民间艺人的展演等。</p>
+        </div>
+    </div>
+    <div class="f1">  <iframe src="分界2.html" ></iframe></div> 
+</div>
+
+<div class="f2"><iframe src="心.html" ></iframe></div>
+
+
+<script>
+
+const AUTO_PLAY_SECOND = 4000;
+
+let carousel = document.querySelector(".carousel");
+let dots = document.querySelectorAll(".dot a");
+let slides = document.querySelector(".slides");
+let slideCount = dots.length;
+
+let setActiveIndex = (activeIndex) => {
+ dots.forEach((dot) => dot.classList.remove("active"));
+ dots[activeIndex].classList.add("active");
+ carousel.style.setProperty("--active-index", `${activeIndex}`);
+};
+
+let scrollLeft = () => {
+ let minIndex = false;
+ let activeIndex = Number(carousel.style.getPropertyValue("--active-index"));
+ activeIndex--;
+ if (activeIndex === -1) {
+   minIndex = true;
+   activeIndex = slideCount - 1;
+ }
+ setActiveIndex(activeIndex);
+ if (minIndex) {
+   slides.scrollBy(carousel.offsetWidth * (slideCount - 1), 0);
+ } else {
+   slides.scrollBy(-carousel.offsetWidth, 0);
+ }
+};
+
+let scrollRight = () => {
+ let maxIndex = false;
+ let activeIndex = Number(carousel.style.getPropertyValue("--active-index"));
+ activeIndex++;
+ if (activeIndex === slideCount) {
+   maxIndex = true;
+   activeIndex = 0;
+ }
+ setActiveIndex(activeIndex);
+ if (maxIndex) {
+   slides.scrollBy(-carousel.offsetWidth * (slideCount - 1), 0);
+ } else {
+   slides.scrollBy(carousel.offsetWidth, 0);
+ }
+};
+
+// auto play
+let autoPlayTimer = setInterval(scrollRight, AUTO_PLAY_SECOND);
+let canAutoPlay = carousel.classList.contains("auto-play");
+if (!canAutoPlay) {
+ clearInterval(autoPlayTimer);
+}
+
+let resetTimer = () => {
+ if (canAutoPlay) {
+   clearInterval(autoPlayTimer);
+   autoPlayTimer = setInterval(scrollRight, AUTO_PLAY_SECOND);
+ }
+};
+
+// dots
+dots[0].classList.add("active");
+dots.forEach((dot, activeIndex) => {
+ dot.addEventListener("click", () => {
+   resetTimer();
+   setActiveIndex(activeIndex);
+ });
+});
+
+// arrows
+let leftArrow = document.querySelector(".nav-arrows .arrow-left");
+let rightArrow = document.querySelector(".nav-arrows .arrow-right");
+leftArrow.addEventListener("click", () => {
+ resetTimer();
+ scrollLeft();
+});
+rightArrow.addEventListener("click", () => {
+ resetTimer();
+ scrollRight();
+});
+
+   </script>
+
+<footer>
+    <p>&copy; 2024 Culture Tour. 本网站所使用素材图片均来自花瓣网。
+        如有侵权请联系：2107084687@qq.com
+    </p>
+</footer>
+</body>
+</html>

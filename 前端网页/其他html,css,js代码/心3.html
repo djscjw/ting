@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100vh;
+  font-family: 'Open Sans', sans-serif;
+
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  position: absolute;
+  height: 350px;
+  width: 100%;
+  max-width: 850px;
+  margin: auto;
+  background-color: #ffffff;
+  border-radius: 25px;
+  box-shadow: 10px 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.card .inner_part {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0 0 30px;
+  height: 350px;
+  position: absolute;
+}
+
+#slideImg:checked ~ .inner_part {
+  padding: 0;
+  transition: .1s ease-in;
+}
+
+.inner_part .img {
+  height: 260px;
+  width: 260px;
+  overflow: hidden;
+  flex-shrink: 0;
+  border-radius: 20px;
+  box-shadow: 0 10px 50px rgba(0,0,0,0.2);
+}
+
+#slideImg:checked ~ .inner_part .img {
+ height: 350px;
+ width: 850px;
+ z-index: 99;
+ transition: .3s .2s ease-in;
+}
+
+.img img {
+  height: 100%;
+  width: 100%;
+  cursor: pointer;
+  opacity: 0;
+  transition: .6s;
+}
+
+#slide_1:checked ~ .inner_part .img_1,
+#slide_2:checked ~ .inner_part .img_2,
+#slide_3:checked ~ .inner_part .img_3 {
+  opacity: 1;
+  transition-delay: .2s;
+}
+
+.content {
+  padding: 0 20px 0 35px;
+  width: 530px;
+  margin-left: 50px;
+  opacity: 0;
+  transition: .6s; 
+}
+
+#slideImg:checked ~ .inner_part .content {
+  display: none;
+}
+
+#slide_1:checked ~ .inner_part .content_1,
+#slide_2:checked ~ .inner_part .content_2,
+#slide_3:checked ~ .inner_part .content_3 {
+  opacity: 1;
+  margin-left: 0;
+  z-index: 100;
+  transition-delay: .3s;
+}
+
+.content .title {
+  font-size: 30px;
+  font-weight: 700;
+  color: #0d0925;
+  margin: 0 0 20px 0;
+}
+
+.content .text {
+  font-size: 19px;
+  color: #2d51bc;
+  margin: 0 auto 30px auto;
+  line-height: 1.5em;
+  text-align: justify;
+}
+
+.content button {
+  padding: 15px 20px;
+  border: none;
+  font-size: 16px;
+  color: #fff0e6;
+  font-weight: 600;
+  letter-spacing: 1px;
+  border-radius: 50px;
+  cursor: pointer;
+  outline: none;
+  background: #000000;
+  float: right;
+}
+
+.content button:hover {
+  background: #6f1919;
+  color: #000000;
+}
+
+.slider {
+  position: absolute;
+  bottom: 25px;
+  left: 55%;
+  transform: translateX(-50%);
+  z-index: 1;
+}
+
+#slideImg:checked ~ .slider {
+  display: none;
+}
+
+.slider .slide {
+  position: relative;
+  height: 10px;
+  width: 50px;
+  background: #e67eb3;
+  border-radius: 5px;
+  display: inline-flex;
+  margin: 0 3px;
+  cursor: pointer;
+}
+
+
+.slider .slide:before {
+  position: absolute;
+  content: '';
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: -100%;
+  background: #000000;;
+  border-radius: 10px;
+  transform: scaleX(0);
+  transition: transform .6s;
+  transform-origin: left;
+}
+
+#slide_1:checked ~ .slider .slide_1:before,
+#slide_2:checked ~ .slider .slide_2:before,
+#slide_3:checked ~ .slider .slide_3:before {
+  transform: scaleX(1);
+  width: 100%;
+}
+
+input {
+  display: none;
+}
+  </style>
+</head>
+<body>
+  <div class="card">
+    <input type="radio" name="select" id="slide_1" checked>
+    <input type="radio" name="select" id="slide_2">
+    <input type="radio" name="select" id="slide_3">
+    <input type="checkbox" id="slideImg">
+  
+    <div class="slider">
+      <label for="slide_1" class="slide slide_1"></label>
+      <label for="slide_2" class="slide slide_2"></label>
+      <label for="slide_3" class="slide slide_3"></label>
+    </div>
+  
+    <div class="inner_part">
+      <label for="slideImg" class="img">
+        <img class="img_1" src="../图片/月5.webp">
+      </label>
+      <div class="content content_1">
+        <div class="title">月牙泉</div>
+        <div class="text">
+          月牙泉泉形酷似一弯新月，水质甘冽，清澈如镜。因“泉映月而无尘”、“亘古沙不填泉，泉不涸竭”而成为奇观。有“沙漠第一泉”之称，自汉朝起即为“敦煌八景”之一。
+        </div>
+        <button><a href="http://www.mssyyq.com/">Read More</a></button>
+      </div>
+    </div>
+  
+    <div class="inner_part">
+      <label for="slideImg" class="img">
+        <img class="img_2" src="../图片/月1.webp">
+      </label>
+      <div class="content content_2">
+        <div class="title">丝绸之路</div>
+        <div class="text">
+          ‘风吹沙山声声鸣，如歌如泣诉衷情” 沙山因其沙粒在风吹拂下会发出声响而得名，一座沙山与敦煌绿洲相伴相生，见证了古丝绸之路的繁华。
+        </div>
+        <button><a href="http://www.mssyyq.com/">Read More</a></button>
+      </div>
+    </div>
+  
+    <div class="inner_part">
+      <label for="slideImg" class="img">
+        <img class="img_3" src="../图片/月4.webp">
+      </label>
+      <div class="content content_3">
+        <div class="title">夫妻柳</div>
+        <div class="text">夫妻柳裁植于1971年，是同根系长出的两株相互依偎的旱柳，被称为“夫妻柳”。它们在鸣沙山月牙泉陪伴下共度无数寒暑岁月，成为游人驻足留恋的大漠一景。这也铸就了关于鸣沙山大多数神话传说。
+        </div>
+        <button><a href="http://www.mssyyq.com/">Read More</a></button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

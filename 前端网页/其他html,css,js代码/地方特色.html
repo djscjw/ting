@@ -1,0 +1,347 @@
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>地方特色展示</title>
+</head>
+<body>
+  <h1>选择省份：</h1>
+  <select id="provinceSelect" onchange="showProvinceInfo()">
+    <option value="">请选择省份</option>
+    <option value="beijing">北京市</option>
+    <option value="shanghai">上海市</option>
+    <!-- 其他省份选项 -->
+
+    <!--
+  </select>
+
+  <div id="provinceInfo"></div>
+
+  <script>
+    function showProvinceInfo() {
+  const provinceSelect = document.getElementById('provinceSelect');
+  const provinceInfo = document.getElementById('provinceInfo');
+  const selectedProvince = provinceSelect.value;
+
+  if (selectedProvince === '') {
+    provinceInfo.innerHTML = ''; // 清空信息区域
+  } else {
+    // 根据选择的省份显示对应的信息
+    let infoText = '';
+    switch (selectedProvince) {
+      case 'beijing':
+        infoText = '北京市是中国的首都。';
+        break;
+      case 'shanghai':
+        infoText = '上海市是中国的经济中心。';
+        break;
+      // 其他省份信息的 case 分支
+      default:
+        infoText = '暂无信息。';
+    }
+    provinceInfo.innerHTML = `<p>${infoText}</p>`;
+  }
+}
+  </script>
+</body>
+</html>
+-->
+
+
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: rgb(111, 139, 116);
+        }
+        header {
+            background-color: #333;
+            color: #efecee;
+            padding: 10px 0;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 18px;
+        }
+        .card-container {
+            display: flex;
+            justify-content: space-around; /* 平均分布卡片 */
+            margin: 50px auto; /* 垂直方向居中 */
+        }
+
+        .card {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            background-color: rgb(241,229,205);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            perspective: 1000px;
+            box-shadow: 0 0 0 5px #dc727280;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card svg {
+            width: 300px;
+
+            fill: #333;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
+        }
+
+        .card__content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            background-color: #f2f2f2;
+            transform: rotateX(-90deg);
+            transform-origin: bottom;
+            transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+
+        .card:hover .card__content {
+            transform: rotateX(0deg);
+        }
+
+        .card__title {
+            margin: 0;
+            font-size: 26px;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .card:hover svg {
+            scale: 0;
+        }
+
+        .card__description {
+            margin: 10px 0 0;
+            font-size: 20px;
+            color: #777;
+            line-height: 1.4;
+        }
+
+        .card__content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 保持图片比例填充整个容器 */
+}
+        iframe {
+            border: none; /* 清除iframe的边框 */
+
+            width: 100%; /* 设置 iframe 宽度 */
+            height: 200px; /* 设置 iframe 高度 */
+
+
+        }
+        .f1 {
+            width: 100%; /* 设置 iframe 宽度 */
+            height: 150px; /* 设置 iframe 高度 */
+        }
+        footer {
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>听，名胜的声音</h1>
+            <nav>
+                <ul>
+                    <li><a href="首页页面.html">首页</a></li>
+                    <li><a href="地方特色.html">地方特色</a></li>
+                    <li><a href="我的.html">我的</a></li>
+                    <li><a href="联系我们.html">联系我们</a></li>
+                    <li><a href="展示.html">关于网页</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="f1">  <iframe src="分界.html" ></iframe></div>
+    <div class="card-container">
+        <div class="card">
+            <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+
+                <image xlink:href="../图片/t1.webp" width="300" height="300" />
+              </svg>
+            <div class="card__content">
+                <p class="card__title">美食</p>
+                <p class="card__description">肉夹馍、羊肉泡馍、油泼面、荞麦饸饹、长武酥肉、汇通面、剁养面、羊杂碎、黄馍馍、凉粉、延安沾沾、洋芋擦擦、黄米糕、豆花泡馍、擀面皮、臊子面、鹿糕馍、醋粉、潼关肉夹馍、水盆羊肉、羊肉饸饹、热米皮...</p>
+
+            </div>
+        </div>
+        <div class="card">
+            <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+
+                <image xlink:href="../图片/t3.jpg" width="300" height="300" />
+              </svg>
+            <div class="card__content">
+                <p class="card__title">非遗</p>
+                <p class="card__description">西安鼓乐、陕北民歌、镇巴民歌、陕北秧歌、安塞腰鼓、秦腔、商洛花鼓、华县皮影戏、华阴老腔、陕西快板、陕北说书、安塞剪纸、汉中藤编、富平石刻、西秦刺绣、合阳提线木偶...</p>
+            </div>
+        </div>
+        <div class="card">
+            <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+
+                <image xlink:href="../图片/t2.jpg" width="300" height="300" />
+              </svg>
+            <div class="card__content">
+                <p class="card__title">发展</p>
+                <p class="card__description">陕西西安，古称长安，是十三朝古都，中国历史最辉煌的两个朝代——汉唐均在此建都。 长安城经济繁荣，成为当时世界上最重要的商业和贸易中心。从9世纪到10世纪初，长安经历了多次兵灾战火，现在西安是中国西部一座活力无限的城市，文化经济繁荣，古老的长安在新时代重新焕发绚丽的光彩。</p>
+            </div>
+        </div>
+    </div>
+    <iframe src="点赞.html" width="360" height="260"></iframe>
+    <div class="f1">  <iframe src="分界_河南.html" ></iframe></div>
+    <div class="card-container">
+        <div class="card">
+            <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+
+                <image xlink:href="../图片/h1.png" width="300" height="300" />
+              </svg>
+            <div class="card__content">
+                <p class="card__title">美食</p>
+                <p class="card__description">河南烩面、延津火烧、信阳板鸭、濮阳壮馍、洛阳豆腐脑、开封灌汤包、粉皮、缠丝鸡蛋、胡辣汤、道口烧鸡、洛阳酸浆面条、开封花生糕...</p>
+            </div>
+        </div>
+        <div class="card">
+            <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+
+                <image xlink:href="../图片/h2.png" width="300" height="300" />
+              </svg>
+            <div class="card__content">
+                <p class="card__title">非遗</p>
+                <p class="card__description">剪纸、灯彩、石雕、汴绣、钧瓷烧制技艺、唐三彩烧制技艺、高抬火轿、麒麟舞、打铁花、少林功夫、狮舞、豫剧...</p>
+            </div>
+        </div>
+        <div class="card">
+            <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+
+                <image xlink:href="../图片/h3.webp" width="300" height="300" />
+              </svg>
+            <div class="card__content">
+                <p class="card__title">古都</p>
+                <p class="card__description">河南有洛阳和开封这两大古都，其中洛阳是十三朝古都，开封是七朝古都。“若问今日事，请君只看洛阳城。”，历经万千年变迁，拥有五千年历史，被誉为“九州之一的中州”。开封最为出名的是清明上河园和丞相府，这里能感受到汴京的繁华。</p>
+            </div>
+        </div>
+    </div>
+    <iframe src="点赞2.html" width="360" height="260"></iframe>
+    <div class="f1">  <iframe src="分界_福建.html" ></iframe></div>
+    <div class="card-container">
+        <div class="card">
+            <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+
+                <image xlink:href="../图片/f1.webp" width="300" height="300" />
+              </svg>
+            <div class="card__content">
+                <p class="card__title">美食</p>
+                <p class="card__description">佛跳墙、肉燕、五香、花生汤、四果汤、姜母鸭、钟楼肉粽、油炸浮果、锅边糊/鼎边糊、芋泥、莆田卤面、面线糊、海蛎煎、福鼎肉片、土笋冻、沙茶面、闽南卤面、四果汤、醋肉、扁食拌面、姜母鸭、馅饼、光饼、牛肉羹、海鲜粥、闽南炒粉、鱼丸...</p>
+            </div>
+        </div>
+        <div class="card">
+            <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+
+                <image xlink:href="../图片/f2.webp" width="300" height="300" />
+              </svg>
+            </svg>
+            <div class="card__content">
+                <p class="card__title">非遗、簪花</p>
+                <p class="card__description">福州油纸伞：图案以传统国画为主，代表多子多福，伞骨为竹，代表长寿，节节高升，伞形圆，寓意美满团圆。花灯，彩扎灯、刻纸灯、针刺无骨灯，木雕、龙舞、童谣，来福建肯定要体验“今生簪花，来世漂亮”。</p>
+            </div>
+        </div>
+        <div class="card">
+            <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+
+                <image xlink:href="../图片/f3.webp" width="300" height="300" />
+              </svg>
+            <div class="card__content">
+                <p class="card__title">游神文化</p>
+                <p class="card__description">游神，又称圣驾巡游、游老爷、游菩萨、游神赛会、年例、迎神、抬神像、神像出巡等等，是指人们在新年期间或其它喜庆节日里，又或诸神圣诞的这一天，到神庙里将行身神像请进神轿里，然后抬出庙宇游境，接受民众的香火膜拜，寓意神明降落民间，巡视乡里，保佑平安。</p>
+            </div>
+        </div>
+    </div>
+    <iframe src="点赞3.html" width="360" height="260"></iframe>
+    <div class="f1">  <iframe src="分界_云南.html" ></iframe></div>
+    <div class="card-container">
+        <div class="card">
+            <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+
+                <image xlink:href="../图片/y1.webp" width="300" height="300" />
+              </svg>
+            <div class="card__content">
+                <p class="card__title">美食</p>
+                <p class="card__description">鲜花饼，酸菜，狮子糕，菠萝饭，辣子鸡，酸辣鱼，炒饵块，火腿木瓜鸡，炸猪皮，椿干巴，椿鸡脚，野生菌炒牛肝菌，山李子冰沙，过桥米线，烤乳扇，豆腐花，菌子火锅，腊排骨...</p>
+            </div>
+        </div>
+        <div class="card">
+            <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+
+                <image xlink:href="../图片/y2.webp" width="300" height="300" />
+              </svg>
+            <div class="card__content">
+                <p class="card__title">非遗</p>
+                <p class="card__description">周城扎染，扎染是中国一种古老的纺织品染色技术。荥阳村-油纸伞 己的历史可追湖到明清时期，古法工艺。三联村土陶里的土陶传下来也有600年的历史，“世界上没有 相同的叶子”我们手工制作的陶器也是独一无二。界头镇新庄村腾宣造纸，腾宣即丰富的植物纤维原料——构树皮，经过多道工序制作而成。</p>
+            </div>
+        </div>
+        <div class="card">
+            <svg width="300" height="300" xmlns="http://www.w3.org/2000/svg">
+
+                <image xlink:href="../图片/y3.webp" width="300" height="300" />
+              </svg>
+            <div class="card__content">
+                <p class="card__title">民族</p>
+                <p class="card__description">“一山分四季，十里不同俗”，云南是我国少数民族最多的省。傣族喜欢依山而居，视孔雀和大象为吉祥物。每年的农历二月初三，彝族就要举报隆重的火把节，相传有近千年的历史传承。三朵节是丽江纳西族祭祀最大的保护神“三多神”的盛大节日。</p>
+            </div>
+        </div>
+    </div>
+    <iframe src="点赞4.html" width="360" height="260"></iframe>
+    <footer>
+        <p>&copy; 2024 Culture Tour. All rights reserved.<br.
+            本网站所使用素材图片均来自花瓣网,如有侵权请联系：2107084687@qq.com   
+        </p>
+    </footer>
+</body>
+</html>
